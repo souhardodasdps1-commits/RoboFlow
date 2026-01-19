@@ -1,21 +1,21 @@
 # RoboFlow
-Declarative robotics framework for Arduino
 
-**RoboFlow** is a rule-based robotics framework for Arduino. It allows developers to create **manual, autonomous, and hybrid robot behaviors** using simple human-readable rules.
+Declarative robotics framework for Arduino.
+
+RoboFlow is a rule-based robotics framework for Arduino. It allows developers to create manual, autonomous, and hybrid robot behaviors using simple, human-readable rules.
 
 ## Features
-
-- Control motors: `forward`, `stop`, `turnLeft`, `turnRight`
+- Motor control: forward, stop, turnLeft, turnRight
 - Ultrasonic obstacle detection support
 - Bluetooth control support
-- Hybrid mode: combines manual and autonomous behavior
-- Simple rule-based syntax for easy programming
+- Hybrid mode combining manual and autonomous behavior
+- Simple rule-based syntax
 
 ## Installation
-
-1. Download the Arduino-ready ZIP from this repository
-2. Open Arduino IDE → Sketch → Include Library → Add .ZIP Library
-3. The library will appear in **Sketch → Include Library → RoboFlow**
+1. Open Arduino IDE
+2. Go to Sketch → Include Library → Manage Libraries
+3. Search for "RoboFlow"
+4. Click Install
 
 ## Example
 
@@ -54,29 +54,12 @@ void setup() {
 void loop() {
   bot.run();
 }
-```
+Usage
+Define motors, sensors, and operating mode in setup()
 
-## `Usage`
+Add behavior rules using when(condition, mode, action)
 
-```cpp
-// 1. Define your robot’s motors, sensors, and mode in setup()
-bot.addUltrasonic(trigPin, echoPin);
-bot.addBluetooth(Serial);
-bot.addMotors(m1a, m1b, m2a, m2b);
-bot.setMode(HYBRID);
+Call bot.run() inside loop()
 
-// 2. Define rules using when(condition, mode, action)
-bot.when("obstacle < 20", AUTONOMOUS, [](){
-    bot.stop();
-    bot.turnLeft();
-});
-
-// 3. Call bot.run() inside loop()
-void loop() {
-    bot.run();
-}
-```
-
-## License
-
-This project is licensed under the **MIT License** — see the `LICENSE` file.
+License
+MIT License. See the LICENSE file for details.
