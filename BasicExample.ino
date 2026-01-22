@@ -4,6 +4,8 @@
 RoboFlow robot;
 
 void setup() {
+  Serial.begin(9600);
+
   // Initialize RoboFlow
   robot.begin();
 
